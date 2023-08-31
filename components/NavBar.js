@@ -9,12 +9,12 @@ import {
 } from 'react-bootstrap';
 import { signOut } from '../utils/auth';
 
-export default function NavBar() {
+export default function NavBar(user) {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
         <Link passHref href="/">
-          <Navbar.Brand>CHANGE ME</Navbar.Brand>
+          <Navbar.Brand>theDupe</Navbar.Brand>
         </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -23,8 +23,17 @@ export default function NavBar() {
             <Link passHref href="/">
               <Nav.Link>Home</Nav.Link>
             </Link>
-            <Link passHref href="/delete-me">
-              <Nav.Link>Delete Me</Nav.Link>
+            <Link passHref href="/dupes/new">
+              <Nav.Link>Found a Dupe?</Nav.Link>
+            </Link>
+            <Link passHref href="/dupes/allDupes">
+              <Nav.Link>All the Dupes!</Nav.Link>
+            </Link>
+            <Link passHref href={`/orders/${user}`}>
+              <Nav.Link>My Orders</Nav.Link>
+            </Link>
+            <Link passHref href={`/checkoutCart/edit/${user}`}>
+              <Nav.Link>My Cart</Nav.Link>
             </Link>
             <Button variant="danger" onClick={signOut}>
               Sign Out
